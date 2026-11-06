@@ -4,7 +4,7 @@ class BasePageLocators:
     order_button_upper_menu = (By.CLASS_NAME, 'Button_Button__ra12g')
     order_button_page_down = (By.CLASS_NAME, 'Button_Button__ra12g  Button_Middle__1CSJM')
     how_much_it_cost_question = (By.ID, 'accordion__heading-8')
-    how_much_it_cost_question = (By.XPATH, '//p[text(="Сутки — 400 рублей. Оплата курьеру — наличными или картой.")]')
+    how_much_it_cost_question_text = (By.XPATH, '//p[text(="Сутки — 400 рублей. Оплата курьеру — наличными или картой.")]')
     few_samokats_question = (By.ID, 'accordion__heading-9')
     few_samokats_question_text = (By.XPATH, '//p[text(="Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим.")]')
     rent_time_question = (By.ID, 'accordion__heading-10')
@@ -19,3 +19,5 @@ class BasePageLocators:
     order_cancel_question_text = (By.XPATH, '//p[text(="Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.")]')
     dileviry_out_of_mkad_question = (By.ID, 'accordion__heading-15')
     dileviry_out_of_mkad_question_text = (By.XPATH, '//p[text(="Да, обязательно. Всем самокатов! И Москве, и Московской области.")]')
+    buttons = [how_much_it_cost_question, few_samokats_question, rent_time_question, samokat_rent_today_question, rent_continue_question, samokat_charger_question, order_cancel_question, dileviry_out_of_mkad_question]
+    text = [how_much_it_cost_question_text, few_samokats_question_text, rent_time_question_text, samokat_rent_today_question_text, rent_continue_question_text, samokat_charger_question_text, order_cancel_question_text, dileviry_out_of_mkad_question_text]
