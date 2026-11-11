@@ -21,3 +21,5 @@ class BasePageLocators:
     dileviry_out_of_mkad_question_text = (By.XPATH, '//p[text(="Да, обязательно. Всем самокатов! И Москве, и Московской области.")]')
     buttons = [how_much_it_cost_question, few_samokats_question, rent_time_question, samokat_rent_today_question, rent_continue_question, samokat_charger_question, order_cancel_question, dileviry_out_of_mkad_question]
     text = [how_much_it_cost_question_text, few_samokats_question_text, rent_time_question_text, samokat_rent_today_question_text, rent_continue_question_text, samokat_charger_question_text, order_cancel_question_text, dileviry_out_of_mkad_question_text]
+    samokat_logo = (By.XPATH, '//a[2]/img')
+    dzen_button = (By.XPATH, '//img')

@@ -9,14 +9,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 class OrderSamokatPage:
     def __init__(self):
-        self.name_1 = 'Игорь'
-        self.name_2 = 'Игорян'
-        self.surname_1 = 'Lysikov'
-        self.surname_2 = 'Lysikyan'
-        self.adress_1 = 'Пушкина'
-        self.adress_2 = 'Колотушкина'
-        self.number_1 = f"{r.randint(1000000000, 9999999999)}"
-        self.number_2 = f"{r.randint(1000000000, 9999999999)}"
         self.order_btn = BasePageLocators.order_button_upper_menu
         self.name_field = OrderPageLocators.name_field
         self.surname_field = OrderPageLocators.surname_field
@@ -24,12 +16,49 @@ class OrderSamokatPage:
         self.metro_station_list = OrderPageLocators.metro_station
         self.metro_station = OrderPageLocators.metro_station
         self.phone_number_field = OrderPageLocators.phone_number
+        self.next_button = OrderPageLocators.next_button
+        self.date_field = OrderPageLocators.date_field
+        self.date = OrderPageLocators.date
+        self.rent_time = OrderPageLocators.rent_time
+        self.rent_time_button = OrderPageLocators.rent_time_button
+        self.collor = OrderPageLocators.collor
+        self.order_button = OrderPageLocators.order_button
+        self.accept_button = OrderPageLocators.accept_button
+        self.accept_message = OrderPageLocators.accept_message
+        self.status_button = OrderPageLocators.status_button
+        self.samokat_button = BasePageLocators.samokat_button
+        self.dzen_button = BasePageLocators.dzen_button
         
 
     def click_order_button(self, driver):
         WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located(self.order_btn))
         driver.find_element(*self.order_btn).click()
 
-    def send_order_keys(self, driver):
+    def order_samokat(self, driver, name, surname, adress, phone):
         WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located(self.order_btn))
-        driver.find_element(*self.order_btn).click()
+        driver.find_element(*self.name_field).send_keys(name)
+        driver.find_element(*self.surname_field).send_keys(surname)
+        driver.find_element(*self.adress_field).send_keys(adress)
+        driver.find_element(*self.metro_station_list).click()
+        driver.find_element(*self.metro_station).click()
+        driver.find_element(*self.phone_number_field).send_keys(phone)
+        driver.find_element(*self.metro_station).click()
+        driver.find_element(*self.date_field).click()
+        driver.find_element(*self.date).click()
+        driver.find_element(*self.rent_time).click()
+        driver.find_element(*self.rent_time_button).click()
+        driver.find_element(*self.collor).click()
+        driver.find_element(*self.order_button).click()
+        driver.find_element(*self.accept_button).click()
+
+    def click_samokat_logo(self, driver):
+        WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located(self.order_btn))
+        driver.find_element(*self.samokat_button).click()
+        current_link = driver.current_url
+        return current_link
+
+    def click_dzen(self, driver):
+        WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located(self.order_btn))
+        driver.find_element(*self.dzen_button).click()
+        current_link = driver.current_url
+        return current_link
