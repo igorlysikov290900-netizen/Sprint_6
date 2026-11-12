@@ -16,3 +16,5 @@ class OrderPageLocators:
     order_button = (By.XPATH, '//div[3]/button[2]')
     accept_message = (By.XPATH, '//div[text()="Заказ оформлен"]')
     status_button = (By.XPATH, '//button[text()="Посмотреть статус"]')
+
+    

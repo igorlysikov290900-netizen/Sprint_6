@@ -31,6 +31,8 @@ class OrderSamokatPage:
         
 
     def click_order_button(self, driver):
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(BasePageLocators.cookie_accept))
+        driver.find_element(*BasePageLocators.cookie_accept).click()
         WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(self.order_btn))
         driver.find_element(*self.order_btn).click()
 
@@ -43,7 +45,8 @@ class OrderSamokatPage:
         WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(self.metro_station))
         driver.find_element(*self.metro_station).click()
         driver.find_element(*self.phone_number_field).send_keys(phone)
-        driver.find_element(*self.next_button).click()
+        element = driver.find_element(*self.next_button) 
+        driver.execute_script("arguments[0].click();", element)
         WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(self.date_field))
         driver.find_element(*self.date_field).click()
         WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(self.date))
