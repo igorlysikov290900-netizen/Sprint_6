@@ -8,25 +8,18 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
 class TestOrderSamokat:
-    name_1 = 'Игорь'
-    name_2 = 'Игорян'
-    names = [name_1, name_2]
-    surname_1 = 'Лысиков'
-    surname_2 = 'Лысикян'
-    surnames = [surname_1, surname_2]
-    adress_1 = 'Пушкина'
-    adress_2 = 'Колотушкина'
-    adresses = [adress_1, adress_2]
-    number_1 = str(r.randint(1000000000, 9999999999))
-    number_2 = str(r.randint(1000000000, 9999999999))
-    numbers = [number_1, number_2]
+    names = ['Игорь', 'Игорян']
+    surnames = ['Лысиков', 'Лысикян']
+    adresses = ['Пушкина', 'Колотушкина']
     
-    @pytest.mark.parametrize('name,surname,adress,phone', [names, surnames, adresses, numbers])
-    def test_order(self, name, surname, adress, phone):
-        test_order_samokat = OrderSamokatPage
-        test_order_samokat.order_samokat(name, surname, adress, phone)
-        assert OrderPageLocators.accept_message == "Заказ оформлен"
-        test_order_samokat.click_samokat_logo()
+    @pytest.mark.parametrize('name,surname,adress', list(zip(names, surnames, adresses)))
+    def test_order(self, driver, name, surname, adress):
+        phone = str(r.randint(10000000000, 99999999999))
+        page = OrderSamokatPage()
+        page.click_order_button(driver)
+        page.order_samokat(driver, name, surname, adress, phone)
+        assert driver.find_element(*OrderPageLocators.accept_message).text == "Заказ оформлен"
+        current_link = page.click_samokat_logo(driver)
         assert current_link == "https://qa-scooter.education-services.ru/"
-        test_order_samokat.click_samokat_logo()
+        current_link = page.click_dzen(driver)
         assert current_link == "https://dzen.ru/"

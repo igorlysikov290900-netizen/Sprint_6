@@ -6,8 +6,8 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
 class TestBasePage:
-    @pytest.mark.parametrize('question_button,question_text', [BasePageLocators.buttons, BasePageLocators.text])
-    def test_check_question_text(self, question_button, question_text):
-        check_question_text = BasePage
-        check_question_text.click_question_button(question_button, question_text)
-        assert self.text == question_text
+    @pytest.mark.parametrize('question_button,question_text', list(zip(BasePageLocators.buttons, BasePageLocators.text)))
+    def test_check_question_text(self, driver, question_button, question_text):
+        check_question_text = BasePage()
+        text = check_question_text.click_question_button(driver, question_button, question_text)
+        assert text == driver.find_element(*question_text).text
