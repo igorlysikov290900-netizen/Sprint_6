@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 
 class BasePageLocators:
     order_button_upper_menu = (By.CLASS_NAME, 'Button_Button__ra12g')
-    order_button_page_down = (By.CLASS_NAME, 'Button_Button__ra12g  Button_Middle__1CSJM')
+    order_button_page_down = (By.XPATH, '//div[5]/button')
     how_much_it_cost_question = (By.ID, 'accordion__heading-0')
     how_much_it_cost_question_text = (By.XPATH, '//p[text()="Сутки — 400 рублей. Оплата курьеру — наличными или картой."]')
     few_samokats_question = (By.ID, 'accordion__heading-1')

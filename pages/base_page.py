@@ -1,5 +1,4 @@
-import pytest
-from selenium import webdriver
+import allure
 from locators.base_page_locators import BasePageLocators
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait

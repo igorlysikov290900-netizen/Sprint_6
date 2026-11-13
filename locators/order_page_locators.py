@@ -4,9 +4,10 @@ class OrderPageLocators:
     name_field = (By.XPATH, '//div[2]/div[1]/input')
     surname_field = (By.XPATH, '//div[2]/div[2]/input')
     adress = (By.XPATH, '//div[2]/div[3]/input')
-    metro_station = (By.XPATH, '//div[4]/div/div/input')
+    metro_station_list = (By.XPATH, '//div[4]/div/div/input')
+    metro_option = (By.XPATH, "//*[text()='Черкизовская']")
     phone_number = (By.XPATH, '//div[5]/input')
-    next_button = (By.XPATH, '//button[text()="Далее"]')
+    next_button = (By.XPATH, '/html/body/div/div/div[2]/div[3]/button')
     date_field = (By.XPATH, '//div[1]/div/input')
     date = (By.XPATH, '//div[2]/div[4]')
     rent_time = (By.XPATH, '//div[text()="* Срок аренды"]')
@@ -16,5 +17,3 @@ class OrderPageLocators:
     order_button = (By.XPATH, '//div[3]/button[2]')
     accept_message = (By.XPATH, '//div[text()="Заказ оформлен"]')
     status_button = (By.XPATH, '//button[text()="Посмотреть статус"]')
-
-    
