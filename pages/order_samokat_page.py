@@ -1,12 +1,14 @@
 import allure
+from pages.base_page import BasePage
 from locators.base_page_locators import BasePageLocators
 from locators.order_page_locators import OrderPageLocators
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
 
-class OrderSamokatPage:
+class OrderSamokatPage(BasePage):
     def __init__(self):
+        super().__init__()
         self.name_field = OrderPageLocators.name_field
         self.surname_field = OrderPageLocators.surname_field
         self.adress_field = OrderPageLocators.adress
@@ -23,15 +25,6 @@ class OrderSamokatPage:
         self.accept_button = OrderPageLocators.accept_button
         self.accept_message = OrderPageLocators.accept_message
         self.status_button = OrderPageLocators.status_button
-        self.samokat_button = BasePageLocators.samokat_logo
-        self.dzen_button = BasePageLocators.dzen_button
-        
-
-    @allure.step('Килкаем на страницу заказа')
-    def click_order_button(self, driver, button):
-        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(BasePageLocators.cookie_accept))
-        driver.find_element(*BasePageLocators.cookie_accept).click()
-        driver.find_element(*button).click()
 
     @allure.step('Оформляем заказ')
     def order_samokat(self, driver, name, surname, adress, phone):
@@ -57,17 +50,6 @@ class OrderSamokatPage:
         WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(self.accept_button))
         driver.find_element(*self.accept_button).click()
 
-    @allure.step('Кликаем на лого самоката')
-    def click_samokat_logo(self, driver):
+    def click_status_button(self, driver):
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(self.status_button))
         driver.find_element(*self.status_button).click()
-        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(self.samokat_button))
-        driver.find_element(*self.samokat_button).click()
-        current_link = driver.current_url
-        return current_link
-
-    @allure.step('Кликаем на лого яндекса')
-    def click_dzen(self, driver):
-        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(self.dzen_button))
-        driver.find_element(*self.dzen_button).click()
-        current_link = driver.current_url
-        return current_link
